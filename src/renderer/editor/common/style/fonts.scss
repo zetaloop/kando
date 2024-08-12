@@ -19,6 +19,13 @@
 }
 
 @font-face {
+  font-family: 'TsangerYuYangT';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../assets/fonts/TsangerYuYangT-W03.ttf') format('truetype');
+}
+
+@font-face {
   font-family: 'Cantarell';
   font-style: normal;
   font-weight: 400;
@@ -33,5 +40,5 @@
 }
 
 .kando-font {
-  font-family: 'Neucha', cursive;
+  font-family: 'Neucha', 'TsangerYuYangT', cursive;
 }
