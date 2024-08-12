@@ -18,9 +18,9 @@ export class URIItemConfig implements IItemConfig {
   /** @inheritdoc */
   public getTipOfTheDay(): string {
     const tips = [
-      'You can use the URI item type to open a website using the http:// protocol.',
-      'You can use the URI item type to open a file or folder using the file:// protocol.',
-      'You can use the URI item type to open a mailto: link.',
+      '使用 http:// 协议来打开网址。',
+      '使用 file:// 协议来打开文件和文件夹。',
+      '使用 mailto:// 协议来打开邮箱。',
     ];
 
     return tips[Math.floor(Math.random() * tips.length)];

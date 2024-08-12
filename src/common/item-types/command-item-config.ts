@@ -18,11 +18,11 @@ export class CommandItemConfig implements IItemConfig {
   /** @inheritdoc */
   public getTipOfTheDay(): string {
     const tips = [
-      'You can use the Command item type to launch applications or scripts.',
-      'If the path to an executable contains spaces, you should "wrap it in quotes".',
-      'Use {{app_name}} to insert the name of the application which was focused when you opened the menu.',
-      'Use {{window_name}} to insert the name of the window which was focused when you opened the menu.',
-      'Use {{pointer_x}} and {{pointer_y}} to insert the pointer position where the menu was opened.',
+      '你可以用命令来启动一个应用和脚本。',
+      '如果程序路径包含空格，你需要 "用英文引号括住它"。',
+      '使用 {{app_name}} 变量代表打开菜单时正在使用的应用名称。',
+      '使用 {{window_name}} 变量代表打开菜单时正在使用的窗口标题。',
+      '使用 {{pointer_x}} 和 {{pointer_y}} 变量代表打开菜单时的光标位置。',
     ];
 
     return tips[Math.floor(Math.random() * tips.length)];

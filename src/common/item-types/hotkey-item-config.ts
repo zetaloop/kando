@@ -19,8 +19,8 @@ export class HotkeyItemConfig implements IItemConfig {
   /** @inheritdoc */
   public getTipOfTheDay(): string {
     const tips = [
-      'When recording a hotkey, you do not have to press all keys at once. You can press them one after another.',
-      'If you cannot record a key because it is used by the system, try typing its name directly. All valid key names are listed <a href="https://github.com/kando-menu/kando/blob/main/docs/configuring.md#menu-shortcuts-vs-simulated-hotkeys" target="_blank">here</a>.',
+      '录制按键组合时，其实不需要一次按下所有按键，可以一个一个按。',
+      '如果系统占用等因素导致你无法录制某个按键，可以试试直接输入按键名称。<br>所有可用的按键名称 <a href="https://github.com/kando-menu/kando/blob/main/docs/configuring.md#menu-shortcuts-vs-simulated-hotkeys" target="_blank">都在这里列出</a>。',
     ];
 
     return tips[Math.floor(Math.random() * tips.length)];

@@ -21,8 +21,8 @@ export class MacroItemConfig implements IItemConfig {
   /** @inheritdoc */
   public getTipOfTheDay(): string {
     const tips = [
-      'All valid key names are listed <a href="https://github.com/kando-menu/kando/blob/main/docs/configuring.md#valid-simulated-hotkeys-using-key-codes" target="_blank">here</a>.',
-      'Per default, Kando adds a 10ms delay before each key event. You can change this with the "delay" property.',
+      '所有可用的按键名称 <a href="https://github.com/kando-menu/kando/blob/main/docs/configuring.md#valid-simulated-hotkeys-using-key-codes" target="_blank">都在这里列出</a>。',
+      '每个按键事件默认延迟 10ms，你可以修改 "delay" 属性来设定延迟时长。',
     ];
 
     return tips[Math.floor(Math.random() * tips.length)];
