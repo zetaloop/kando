@@ -13,58 +13,58 @@
 <div class="fs-5 kando-font mb-1">{{{subheading}}}</div>
 
 {{> checkbox-option 
-    label="Limit to Specific Apps"
-    hint="Show the menu only if a specific application is focused."
-    checkedHint="This supports regular expressions like /firefox|chrome/i."
+    label="仅限指定应用"
+    hint="只在当前应用是指定应用时打开此菜单。"
+    checkedHint="支持正则表达式，比如 /firefox|chrome/i。"
     id="kando-properties-condition-app-checkbox"
 }}
 
 <div id="kando-properties-condition-app-collapse" class="collapse">
   <div class="input-group my-2">
     <input id="kando-properties-condition-app" type="text" 
-          class="form-control my-2 fs-3 kando-font" placeholder="App Name">
+          class="form-control my-2 fs-3 kando-font" placeholder="应用名称">
     <button class="btn btn-primary align-self-center fs-3"
-            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Use the app which was focused when the Kando was opened.">
+            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="填入打开 Kando 之前正在使用的那个应用。">
       <i class='material-symbols-rounded inline-icon'>highlight_mouse_cursor</i>
     </button>
   </div>
 </div>
 
 {{> checkbox-option 
-    label="Limit to Specific Window Titles"
-    hint="Show the menu only if the focused window's title contains a given text."
-    checkedHint="This supports regular expressions like /youtube|vimeo/i."
+    label="仅限指定窗口标题"
+    hint="只在当前窗口标题包含指定文字时打开此菜单。"
+    checkedHint="支持正则表达式，比如 /youtube|vimeo/i。"
     id="kando-properties-condition-window-checkbox"
 }}
 
 <div id="kando-properties-condition-window-collapse" class="collapse">
   <div class="input-group my-2">
     <input id="kando-properties-condition-window" type="text" 
-          class="form-control my-2 fs-3 kando-font" placeholder="Window Title">
+          class="form-control my-2 fs-3 kando-font" placeholder="窗口标题">
     <button class="btn btn-primary align-self-center fs-3"
-            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Use the window which was focused when the Kando was opened.">
+            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="填入打开 Kando 之前正在使用的那个窗口。">
       <i class='material-symbols-rounded inline-icon'>highlight_mouse_cursor</i>
     </button>
   </div>
 </div>
 
 {{> checkbox-option 
-    label="Limit to Specific Screen Area"
-    hint="Show the menu only if the pointer is in a given area on the screen."
-    checkedHint="In pixels, relative to the top left corner of your main display."
+    label="仅限指定屏幕区域"
+    hint="只在光标处于指定屏幕区域时打开此菜单。"
+    checkedHint="以像素为单位，从主屏左上角开始计算。"
     id="kando-properties-condition-screen-checkbox"
 }}
 
 <div id="kando-properties-condition-screen-collapse" class="collapse">
   <div id="kando-properties-condition-screen-hint" class="fs-5 kando-font"></div>
   <div class="input-group my-2">
-    <input id="kando-properties-condition-screen-x-min" type="number" class="form-control fs-3 kando-font" placeholder="Left">
-    <input id="kando-properties-condition-screen-x-max" type="number" class="form-control fs-3 kando-font" placeholder="Right">
-    <input id="kando-properties-condition-screen-y-min" type="number" class="form-control fs-3 kando-font" placeholder="Top">
-    <input id="kando-properties-condition-screen-y-max" type="number" class="form-control fs-3 kando-font" placeholder="Bottom">
+    <input id="kando-properties-condition-screen-x-min" type="number" class="form-control fs-3 kando-font" placeholder="左">
+    <input id="kando-properties-condition-screen-x-max" type="number" class="form-control fs-3 kando-font" placeholder="右">
+    <input id="kando-properties-condition-screen-y-min" type="number" class="form-control fs-3 kando-font" placeholder="上">
+    <input id="kando-properties-condition-screen-y-max" type="number" class="form-control fs-3 kando-font" placeholder="下">
   </div>
 </div>
 
 <div class='d-flex justify-content-end mt-3'>
-  <button class="btn btn-secondary fs-3 kando-font my-3 px-5 ms-auto" id="kando-properties-condition-picker-done">Done</button>
+  <button class="btn btn-secondary fs-3 kando-font my-3 px-5 ms-auto" id="kando-properties-condition-picker-done">完成</button>
 </div>

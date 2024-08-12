@@ -50,9 +50,9 @@ export class AdvancedOptionsPicker extends EventEmitter {
     const template = require('./templates/advanced-options-picker.hbs');
     container.classList.value = 'd-flex flex-column justify-content-center hidden';
     container.innerHTML = template({
-      heading: "Tweak the Menu's Behavior",
+      heading: '调整菜单行为模式。',
       subheading:
-        "Before you enable these options, we recommend learning Kando's default behavior. Read about why we like it <a %s>here</a>.".replace(
+        '在开启这些选项之前，我们推荐先学会 Kando 的默认行为模式。<br><a %s>点击查看为何我们这样推荐</a>。'.replace(
           '%s',
           'target="_blank" href="https://github.com/kando-menu/kando/blob/main/docs/usage.md"'
         ),

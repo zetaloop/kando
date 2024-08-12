@@ -40,11 +40,11 @@ export class ShortcutPicker extends TextPicker {
    */
   constructor() {
     super({
-      label: 'Shortcut',
-      hint: 'This will open the menu.',
+      label: '快捷键',
+      hint: '按下这个快捷键打开菜单。',
       lines: 1,
-      placeholder: 'Not Bound',
-      recordingPlaceholder: 'Press a shortcut...',
+      placeholder: '未绑定快捷键',
+      recordingPlaceholder: '请按下快捷键...',
       enableRecording: true,
       resetOnBlur: true,
     });

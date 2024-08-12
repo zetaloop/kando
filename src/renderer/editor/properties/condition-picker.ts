@@ -69,9 +69,9 @@ export class ConditionPicker extends EventEmitter {
     const template = require('./templates/condition-picker.hbs');
     container.classList.value = 'd-flex flex-column justify-content-center hidden';
     container.innerHTML = template({
-      heading: 'Select Menu Conditions',
+      heading: '选择菜单条件',
       subheading:
-        'You can bind multiple menus to the same shortcut and then choose under which conditions each menu should be shown.',
+        '你可以将多个菜单绑定到相同的快捷键，然后设定不同条件来打开不同的菜单。',
     });
 
     const idPrefix = '#kando-properties-condition-';
@@ -135,7 +135,7 @@ export class ConditionPicker extends EventEmitter {
     // Update the mouse position hint. This will be called on every mouse move event
     // while the condition picker is open.
     this.mouseMoveHandler = (event: MouseEvent) => {
-      this.screenAreaHint.innerText = `Your mouse is currently at ${
+      this.screenAreaHint.innerText = `当前光标位置是 ${
         event.clientX + this.windowPosition.x
       } x ${event.clientY + this.windowPosition.y}`;
     };
