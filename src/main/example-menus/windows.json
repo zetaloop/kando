@@ -38,8 +38,8 @@
               "command": "mspaint"
             },
             "name": "画图",
-            "icon": "windows95",
-            "iconTheme": "simple-icons"
+            "icon": "palette",
+            "iconTheme": "material-symbols-rounded"
           },
           {
             "type": "command",
