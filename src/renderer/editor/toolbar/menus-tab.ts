@@ -106,7 +106,7 @@ export class MenusTab extends DropTargetTab {
     const description = this.container.querySelector(`${id} .description`);
     if (description) {
       description.textContent =
-        (this.showShortcutIDs ? menu.shortcutID : menu.shortcut) || 'Not bound.';
+        (this.showShortcutIDs ? menu.shortcutID : menu.shortcut) || '未绑定快捷键。';
     }
   }
 
@@ -141,7 +141,7 @@ export class MenusTab extends DropTargetTab {
       name: menu.root.name,
       checked: index === this.currentMenu,
       description:
-        (this.showShortcutIDs ? menu.shortcutID : menu.shortcut) || 'Not bound.',
+        (this.showShortcutIDs ? menu.shortcutID : menu.shortcut) || '未绑定快捷键。',
       icon: IconThemeRegistry.getInstance()
         .getTheme(menu.root.iconTheme)
         .createDiv(menu.root.icon).outerHTML,
@@ -213,12 +213,12 @@ export class MenusTab extends DropTargetTab {
 
     // Choose a new name for the menu. We will start with "New Menu" and append a
     // number if this name is already taken.
-    let name = 'New Menu';
+    let name = '新建菜单';
     let i = 1;
 
     if (this.menuSettings.menus.find((menu) => menu.root.name === name)) {
       do {
-        name = `New Menu ${i}`;
+        name = `新建菜单${i}`;
         i++;
       } while (this.menuSettings.menus.find((menu) => menu.root.name === name));
     }

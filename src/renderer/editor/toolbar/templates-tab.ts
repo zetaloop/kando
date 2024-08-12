@@ -112,7 +112,7 @@ export class TemplatesTab extends DropTargetTab {
           isMenu: true,
           name: menu.root.name,
           description:
-            (this.showShortcutIDs ? menu.shortcutID : menu.shortcut) || 'Not bound.',
+            (this.showShortcutIDs ? menu.shortcutID : menu.shortcut) || '未绑定快捷键。',
           icon: IconThemeRegistry.getInstance()
             .getTheme(menu.root.iconTheme)
             .createDiv(menu.root.icon).outerHTML,
@@ -138,9 +138,8 @@ export class TemplatesTab extends DropTargetTab {
     const template = require('./templates/templates-trash-tab.hbs');
     this.tabContent.innerHTML = template({
       type: 'template',
-      placeholderHeading: 'Drop menus and menu items here and use them as templates!',
-      placeholderSubheading:
-        'Create copies of the stored items by moving them to the menus tab or to the preview above.',
+      placeholderHeading: '拖放到这里即可储存为模板！',
+      placeholderSubheading: '将模板拖放到菜单列表或上方的预览区来创建菜单或菜单项。',
       items: data,
     });
 

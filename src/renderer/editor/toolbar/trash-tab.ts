@@ -94,7 +94,7 @@ export class TrashTab extends DropTargetTab {
           isMenu: true,
           name: menu.root.name,
           description:
-            (this.showShortcutIDs ? menu.shortcutID : menu.shortcut) || 'Not bound.',
+            (this.showShortcutIDs ? menu.shortcutID : menu.shortcut) || '未绑定快捷键。',
           icon: IconThemeRegistry.getInstance()
             .getTheme(menu.root.iconTheme)
             .createDiv(menu.root.icon).outerHTML,
@@ -120,8 +120,8 @@ export class TrashTab extends DropTargetTab {
     const template = require('./templates/templates-trash-tab.hbs');
     this.tabContent.innerHTML = template({
       type: 'trash',
-      placeholderHeading: 'You can delete menus and menu items by dropping them here!',
-      placeholderSubheading: 'When you restart Kando, they will be gone.',
+      placeholderHeading: '拖放到这里即可删除！',
+      placeholderSubheading: '在下一次启动 Kando 的时候，这里会自动清空。',
       items: data,
     });
 
