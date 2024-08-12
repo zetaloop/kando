@@ -28,7 +28,7 @@
             "data": {
               "command": "start mailto:"
             },
-            "name": "邮箱",
+            "name": "邮件",
             "icon": "mail",
             "iconTheme": "material-symbols-rounded"
           },
@@ -120,7 +120,7 @@
           "hotkey": "ControlLeft+MetaLeft+ArrowRight",
           "delayed": false
         },
-        "name": "下一个桌面",
+        "name": "下一工作区",
         "icon": "arrow_forward",
         "iconTheme": "material-symbols-rounded"
       },
@@ -165,7 +165,7 @@
       },
       {
         "type": "submenu",
-        "name": "音频",
+        "name": "媒体",
         "icon": "play_circle",
         "iconTheme": "material-symbols-rounded",
         "children": [
@@ -270,7 +270,7 @@
           "hotkey": "ControlLeft+MetaLeft+ArrowLeft",
           "delayed": false
         },
-        "name": "上一个桌面",
+        "name": "上一工作区",
         "icon": "arrow_back",
         "iconTheme": "material-symbols-rounded"
       },
