@@ -23,10 +23,10 @@ export class ShortcutIDPicker extends TextPicker {
    */
   constructor(hint: string) {
     super({
-      label: 'Global Shortcut ID',
+      label: '全局快捷键 ID',
       hint,
       lines: 1,
-      placeholder: 'Not Bound',
+      placeholder: '未绑定快捷键',
       recordingPlaceholder: '',
       enableRecording: false,
       resetOnBlur: false,
