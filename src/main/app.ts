@@ -164,7 +164,7 @@ export class KandoApp {
 
     this.updateChecker.on('update-available', () => {
       console.log(
-        'A new version of Kando is available! Get it from https://github.com/kando-menu/kando/releases.'
+        'Kando 发布新版本啦！前往 https://github.com/kando-menu/kando/releases 下载。'
       );
 
       // Show the update-available button in the sidebar.
@@ -176,8 +176,8 @@ export class KandoApp {
       // Show a notification if possible.
       if (Notification.isSupported()) {
         const notification = new Notification({
-          title: 'A new version of Kando is available!',
-          body: 'Get it from https://github.com/kando-menu/kando/releases.',
+          title: 'Kando 发布新版本啦！',
+          body: '前往 https://github.com/kando-menu/kando/releases 下载。',
           icon: path.join(__dirname, require('../../assets/icons/icon.png')),
         });
 
@@ -815,7 +815,7 @@ export class KandoApp {
       const trigger =
         (this.backend.getBackendInfo().supportsShortcuts
           ? menu.shortcut
-          : menu.shortcutID) || 'Not Bound';
+          : menu.shortcutID) || '未绑定快捷键';
       template.push({
         label: `${menu.root.name} (${trigger})`,
         click: () => {
@@ -831,7 +831,7 @@ export class KandoApp {
 
     // Add an entry to show the editor.
     template.push({
-      label: 'Show Settings',
+      label: '打开设置',
       click: () => this.showEditor(),
     });
 
@@ -839,7 +839,7 @@ export class KandoApp {
 
     // Add an entry to quit the application.
     template.push({
-      label: 'Quit',
+      label: '退出',
       role: 'quit',
     });
 
