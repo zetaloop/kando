@@ -34,8 +34,8 @@ export class CommandItemConfig implements IItemConfig {
     const fragment = utils.renderTemplate(
       require('../../renderer/editor/properties/templates/checkbox-option.hbs'),
       {
-        label: 'Execute After Closing the Menu',
-        hint: 'Useful if the command targets a window that needs to be focused.',
+        label: '菜单关闭后执行',
+        hint: '有些命令需要知道被 Kando 挡住的当前窗口。',
       }
     );
 
@@ -52,9 +52,9 @@ export class CommandItemConfig implements IItemConfig {
       utils.renderTemplate(
         require('../../renderer/editor/properties/templates/text-option.hbs'),
         {
-          placeholder: 'Not Defined',
-          label: 'Command',
-          hint: 'This will be executed.',
+          placeholder: '未设定',
+          label: '命令',
+          hint: '该命令将被运行。',
         }
       )
     );

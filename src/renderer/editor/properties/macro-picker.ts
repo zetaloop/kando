@@ -33,8 +33,8 @@ export class MacroPicker extends TextPicker {
       label: '',
       hint: '',
       lines: 5,
-      placeholder: 'Hit the record button to start recording!',
-      recordingPlaceholder: 'Press the keys...',
+      placeholder: '点击右边录制按钮开始录制！',
+      recordingPlaceholder: '请按下按键...',
       enableRecording: true,
       resetOnBlur: false,
     });

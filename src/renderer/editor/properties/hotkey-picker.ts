@@ -35,11 +35,11 @@ export class HotkeyPicker extends TextPicker {
    */
   constructor() {
     super({
-      label: 'Hotkey',
-      hint: 'This will be simulated.',
+      label: '按键',
+      hint: '该按键将被模拟。',
       lines: 1,
-      placeholder: 'Not Bound',
-      recordingPlaceholder: 'Press a hotkey...',
+      placeholder: '未设定',
+      recordingPlaceholder: '请按下按键...',
       enableRecording: true,
       resetOnBlur: false,
     });

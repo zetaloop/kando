@@ -35,8 +35,8 @@ export class HotkeyItemConfig implements IItemConfig {
       utils.renderTemplate(
         require('../../renderer/editor/properties/templates/checkbox-option.hbs'),
         {
-          label: 'Execute After Closing the Menu',
-          hint: 'Ensures that Kando does not block the key events.',
+          label: '菜单关闭后执行',
+          hint: '确保 Kando 不会阻挡按键事件。',
         }
       )
     );

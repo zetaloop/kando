@@ -31,9 +31,9 @@ export class URIItemConfig implements IItemConfig {
     const fragment = utils.renderTemplate(
       require('../../renderer/editor/properties/templates/text-option.hbs'),
       {
-        placeholder: 'Not Defined',
-        label: 'URI',
-        hint: 'This will be opened.',
+        placeholder: '未设定',
+        label: 'URI 地址',
+        hint: '该地址将被打开。',
       }
     );
 
