@@ -28,7 +28,7 @@ export class CommandItemType implements IItemType {
   }
 
   get defaultName(): string {
-    return 'Launch Application';
+    return '运行程序';
   }
 
   get defaultIcon(): string {
@@ -47,10 +47,10 @@ export class CommandItemType implements IItemType {
   }
 
   get genericDescription(): string {
-    return 'Runs any command.';
+    return '运行一个命令。';
   }
 
   getDescription(item: IMenuItem): string {
-    return (item.data as IItemData).command || 'Not configured.';
+    return (item.data as IItemData).command || '未配置。';
   }
 }

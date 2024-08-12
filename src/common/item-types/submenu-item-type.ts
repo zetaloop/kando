@@ -21,7 +21,7 @@ export class SubmenuItemType implements IItemType {
   }
 
   get defaultName(): string {
-    return 'Submenu';
+    return '子菜单';
   }
 
   get defaultIcon(): string {
@@ -37,10 +37,10 @@ export class SubmenuItemType implements IItemType {
   }
 
   get genericDescription(): string {
-    return 'Contains other menu items.';
+    return '用来包含其他菜单项。';
   }
 
   getDescription(item: IMenuItem): string {
-    return `Contains ${item.children.length} menu items.`;
+    return `包含${item.children.length}个菜单项。`;
   }
 }

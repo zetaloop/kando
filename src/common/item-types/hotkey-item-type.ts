@@ -28,7 +28,7 @@ export class HotkeyItemType implements IItemType {
   }
 
   get defaultName(): string {
-    return 'Simulate Hotkey';
+    return '模拟按键';
   }
 
   get defaultIcon(): string {
@@ -47,13 +47,13 @@ export class HotkeyItemType implements IItemType {
   }
 
   get genericDescription(): string {
-    return 'Presses a hotkey.';
+    return '按下一个快捷键。';
   }
 
   getDescription(item: IMenuItem): string {
     const data = item.data as IItemData;
     if (!data.hotkey) {
-      return 'Not configured.';
+      return '未配置。';
     }
 
     // Remove all Left/Right suffixes from the modifiers "Control", "Shift", "Alt" and

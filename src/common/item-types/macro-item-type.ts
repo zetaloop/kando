@@ -34,7 +34,7 @@ export class MacroItemType implements IItemType {
   }
 
   get defaultName(): string {
-    return 'Simulate Macro';
+    return '模拟宏';
   }
 
   get defaultIcon(): string {
@@ -53,13 +53,13 @@ export class MacroItemType implements IItemType {
   }
 
   get genericDescription(): string {
-    return 'Types a keyboard macro.';
+    return '执行一系列按键。';
   }
 
   getDescription(item: IMenuItem): string {
     const data = item.data as IItemData;
     if (!data.macro) {
-      return 'Not configured.';
+      return '未配置。';
     }
 
     // Remove all Left/Right suffixes from the modifiers "Control", "Shift", "Alt" and

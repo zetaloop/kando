@@ -26,7 +26,7 @@ export class URIItemType implements IItemType {
   }
 
   get defaultName(): string {
-    return 'Open URI';
+    return '打开网址';
   }
 
   get defaultIcon(): string {
@@ -44,10 +44,10 @@ export class URIItemType implements IItemType {
   }
 
   get genericDescription(): string {
-    return 'Opens files or websites.';
+    return '打开网址或文件。';
   }
 
   getDescription(item: IMenuItem): string {
-    return (item.data as IItemData).uri || 'Not configured.';
+    return (item.data as IItemData).uri || '未配置。';
   }
 }
