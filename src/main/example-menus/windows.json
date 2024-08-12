@@ -4,13 +4,13 @@
   "centered": false,
   "root": {
     "type": "submenu",
-    "name": "Example Menu",
+    "name": "示例菜单",
     "icon": "award_star",
     "iconTheme": "material-symbols-rounded",
     "children": [
       {
         "type": "submenu",
-        "name": "Apps",
+        "name": "应用",
         "icon": "apps",
         "iconTheme": "material-symbols-rounded",
         "children": [
@@ -19,7 +19,7 @@
             "data": {
               "command": "explorer \"https://www.google.com\""
             },
-            "name": "Web Browser",
+            "name": "浏览器",
             "icon": "globe",
             "iconTheme": "material-symbols-rounded"
           },
@@ -28,7 +28,7 @@
             "data": {
               "command": "start mailto:"
             },
-            "name": "E-Mail",
+            "name": "邮箱",
             "icon": "mail",
             "iconTheme": "material-symbols-rounded"
           },
@@ -37,7 +37,7 @@
             "data": {
               "command": "mspaint"
             },
-            "name": "Paint",
+            "name": "画图",
             "icon": "windows95",
             "iconTheme": "simple-icons"
           },
@@ -46,7 +46,7 @@
             "data": {
               "command": "explorer"
             },
-            "name": "File Browser",
+            "name": "文件管理器",
             "icon": "folder_shared",
             "iconTheme": "material-symbols-rounded"
           },
@@ -55,7 +55,7 @@
             "data": {
               "command": "start powershell"
             },
-            "name": "Terminal",
+            "name": "终端",
             "icon": "terminal",
             "iconTheme": "material-symbols-rounded"
           }
@@ -63,7 +63,7 @@
       },
       {
         "type": "submenu",
-        "name": "Web Links",
+        "name": "网址",
         "icon": "public",
         "iconTheme": "material-symbols-rounded",
         "children": [
@@ -81,7 +81,7 @@
             "data": {
               "uri": "https://github.com/kando-menu/kando"
             },
-            "name": "Kando on GitHub",
+            "name": "Kando GitHub 仓库",
             "icon": "github",
             "iconTheme": "simple-icons"
           },
@@ -90,7 +90,7 @@
             "data": {
               "uri": "https://ko-fi.com/schneegans"
             },
-            "name": "Kando on Ko-fi",
+            "name": "Kando Ko-fi 赞助",
             "icon": "kofi",
             "iconTheme": "simple-icons"
           },
@@ -120,13 +120,13 @@
           "hotkey": "ControlLeft+MetaLeft+ArrowRight",
           "delayed": false
         },
-        "name": "Next Workspace",
+        "name": "下一个桌面",
         "icon": "arrow_forward",
         "iconTheme": "material-symbols-rounded"
       },
       {
         "type": "submenu",
-        "name": "Clipboard",
+        "name": "剪贴板",
         "icon": "assignment",
         "iconTheme": "material-symbols-rounded",
         "children": [
@@ -136,7 +136,7 @@
               "hotkey": "ControlLeft+KeyV",
               "delayed": true
             },
-            "name": "Paste",
+            "name": "粘贴",
             "icon": "content_paste_go",
             "iconTheme": "material-symbols-rounded",
             "angle": 90
@@ -147,7 +147,7 @@
               "hotkey": "ControlLeft+KeyC",
               "delayed": true
             },
-            "name": "Copy",
+            "name": "复制",
             "icon": "content_copy",
             "iconTheme": "material-symbols-rounded"
           },
@@ -157,7 +157,7 @@
               "hotkey": "ControlLeft+KeyX",
               "delayed": true
             },
-            "name": "Cut",
+            "name": "剪切",
             "icon": "cut",
             "iconTheme": "material-symbols-rounded"
           }
@@ -165,7 +165,7 @@
       },
       {
         "type": "submenu",
-        "name": "Audio",
+        "name": "音频",
         "icon": "play_circle",
         "iconTheme": "material-symbols-rounded",
         "children": [
@@ -175,7 +175,7 @@
               "hotkey": "MediaTrackNext",
               "delayed": false
             },
-            "name": "Next Title",
+            "name": "下一首",
             "icon": "skip_next",
             "iconTheme": "material-symbols-rounded",
             "angle": 90
@@ -186,7 +186,7 @@
               "hotkey": "MediaPlayPause",
               "delayed": false
             },
-            "name": "Play / Pause",
+            "name": "播放 / 暂停",
             "icon": "play_pause",
             "iconTheme": "material-symbols-rounded"
           },
@@ -196,7 +196,7 @@
               "hotkey": "AudioVolumeMute",
               "delayed": false
             },
-            "name": "Mute",
+            "name": "静音",
             "icon": "music_off",
             "iconTheme": "material-symbols-rounded"
           },
@@ -206,7 +206,7 @@
               "hotkey": "MediaTrackPrevious",
               "delayed": false
             },
-            "name": "Previous Title",
+            "name": "上一首",
             "icon": "skip_previous",
             "iconTheme": "material-symbols-rounded",
             "angle": 270
@@ -215,7 +215,7 @@
       },
       {
         "type": "submenu",
-        "name": "Windows",
+        "name": "窗口",
         "icon": "select_window",
         "iconTheme": "material-symbols-rounded",
         "children": [
@@ -225,7 +225,7 @@
               "hotkey": "MetaLeft+ArrowUp",
               "delayed": true
             },
-            "name": "Toggle Maximize",
+            "name": "切换最大化",
             "icon": "open_in_full",
             "iconTheme": "material-symbols-rounded",
             "angle": 0
@@ -236,7 +236,7 @@
               "hotkey": "MetaLeft+ArrowRight",
               "delayed": true
             },
-            "name": "Tile Right",
+            "name": "向右贴靠",
             "icon": "text_select_jump_to_end",
             "iconTheme": "material-symbols-rounded",
             "angle": 90
@@ -247,7 +247,7 @@
               "hotkey": "AltLeft+F4",
               "delayed": true
             },
-            "name": "Close Window",
+            "name": "关闭窗口",
             "icon": "cancel_presentation",
             "iconTheme": "material-symbols-rounded"
           },
@@ -257,7 +257,7 @@
               "hotkey": "MetaLeft+ArrowLeft",
               "delayed": true
             },
-            "name": "Tile Left",
+            "name": "向左贴靠",
             "icon": "text_select_jump_to_beginning",
             "iconTheme": "material-symbols-rounded",
             "angle": 270
@@ -270,13 +270,13 @@
           "hotkey": "ControlLeft+MetaLeft+ArrowLeft",
           "delayed": false
         },
-        "name": "Previous Workspace",
+        "name": "上一个桌面",
         "icon": "arrow_back",
         "iconTheme": "material-symbols-rounded"
       },
       {
         "type": "submenu",
-        "name": "Bookmarks",
+        "name": "书签",
         "icon": "folder_special",
         "iconTheme": "material-symbols-rounded",
         "children": [
@@ -285,7 +285,7 @@
             "data": {
               "command": "explorer %USERPROFILE%\\Downloads"
             },
-            "name": "Downloads",
+            "name": "下载",
             "icon": "download",
             "iconTheme": "material-symbols-rounded"
           },
@@ -294,7 +294,7 @@
             "data": {
               "command": "powershell -Command \"Start-Process explorer.exe ([System.Environment]::GetFolderPath('MyVideos'))\""
             },
-            "name": "Videos",
+            "name": "视频",
             "icon": "video_camera_front",
             "iconTheme": "material-symbols-rounded"
           },
@@ -303,7 +303,7 @@
             "data": {
               "command": "powershell -Command \"Start-Process explorer.exe ([System.Environment]::GetFolderPath('MyPictures'))\""
             },
-            "name": "Pictures",
+            "name": "图片",
             "icon": "imagesmode",
             "iconTheme": "material-symbols-rounded"
           },
@@ -312,7 +312,7 @@
             "data": {
               "command": "powershell -Command \"Start-Process explorer.exe ([System.Environment]::GetFolderPath('MyDocuments'))\""
             },
-            "name": "Documents",
+            "name": "文档",
             "icon": "text_ad",
             "iconTheme": "material-symbols-rounded"
           },
@@ -321,7 +321,7 @@
             "data": {
               "command": "powershell -Command \"Start-Process explorer.exe ([System.Environment]::GetFolderPath('Desktop'))\""
             },
-            "name": "Desktop",
+            "name": "桌面",
             "icon": "desktop_windows",
             "iconTheme": "material-symbols-rounded"
           },
@@ -330,7 +330,7 @@
             "data": {
               "command": "start %USERPROFILE%"
             },
-            "name": "Home",
+            "name": "用户",
             "icon": "home",
             "iconTheme": "material-symbols-rounded"
           },
@@ -339,7 +339,7 @@
             "data": {
               "command": "powershell -Command \"Start-Process explorer.exe ([System.Environment]::GetFolderPath('MyMusic'))\""
             },
-            "name": "Music",
+            "name": "音乐",
             "icon": "music_note",
             "iconTheme": "material-symbols-rounded"
           }
