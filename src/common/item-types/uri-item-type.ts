@@ -26,7 +26,7 @@ export class URIItemType implements IItemType {
   }
 
   get defaultName(): string {
-    return '打开网址';
+    return '打开地址';
   }
 
   get defaultIcon(): string {
