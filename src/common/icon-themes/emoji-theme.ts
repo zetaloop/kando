@@ -34,7 +34,7 @@ export class EmojiTheme implements IIconTheme {
 
   /** Returns a human-readable name of the icon theme. */
   get name() {
-    return 'Emojis';
+    return '表情符号';
   }
 
   /**

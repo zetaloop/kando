@@ -31,7 +31,7 @@ export class MaterialSymbolsTheme implements IIconTheme {
 
   /** Returns a human-readable name of the icon theme. */
   get name() {
-    return 'Material Symbols Rounded';
+    return 'Material Symbols 圆角';
   }
 
   /**

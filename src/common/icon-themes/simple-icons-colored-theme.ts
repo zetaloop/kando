@@ -17,7 +17,7 @@ import { SimpleIconsTheme } from './simple-icons-theme';
 export class SimpleIconsColoredTheme extends SimpleIconsTheme {
   /** Returns a human-readable name of the icon theme. */
   get name() {
-    return 'Simple Icons (Colored)';
+    return 'Simple Icons 彩色';
   }
 
   /**

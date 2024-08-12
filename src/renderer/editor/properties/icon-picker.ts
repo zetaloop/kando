@@ -81,9 +81,9 @@ export class IconPicker extends EventEmitter {
     // and `key`. The `name` is the display name of the theme and the `key` is the key
     // that is used to identify the theme in the IconThemeRegistry.
     const data = {
-      heading: 'Select an Icon',
+      heading: '选择图标',
       subheading:
-        'Add your own icon collections by putting a folder with images into %1. You will need to restart Kando. Learn more <a %2>here</a>.'
+        '如需自定义图标，请将图标包文件夹放在到目录 %1 中，然后重新启动 Kando。<a %2>点击了解详情</a>。'
           .replace('%1', IconThemeRegistry.getInstance().userIconThemeDirectory)
           .replace(
             '%2',
