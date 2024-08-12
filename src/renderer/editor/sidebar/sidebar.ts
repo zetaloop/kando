@@ -95,33 +95,32 @@ export class Sidebar {
         {
           id: 'sidebar-tab-introduction',
           icon: 'school',
-          title: 'Introduction',
+          title: '介绍',
           content: introduction({
             id: 'introduction-slides',
             slides: [
               {
-                heading: 'Click Anywhere:',
-                subheading:
-                  'You do not have to exactly click on an item, you just have to click somewhere into its wedge!',
+                heading: '点击任何方向:',
+                subheading: '不需要准确地点击某个菜单项，只需要点击它的方向即可！',
               },
               {
-                heading: 'Go Back:',
-                subheading: 'Quickly navigate one level up by clicking the center item.',
+                heading: '返回:',
+                subheading: '点击中心返回上一层。',
               },
               {
-                heading: 'Marking Mode:',
+                heading: '画笔模式:',
                 subheading:
-                  'Drag over an item to enter marking mode. If you pause the pointer movement or make a turn, the currently dragged submenu will be opened.',
+                  '按住并向外拖动进入画笔模式，然后停下不动或转向来打开一个子菜单',
               },
               {
-                heading: 'Turbo Mode:',
+                heading: '极速模式:',
                 subheading:
-                  'If you keep a key pressed after opening the menu, you can perform selections by just moving the pointer. This is the fastest way to select items!',
+                  '在打开菜单后按住任意键盘按键不放，接下去只要移动光标即可选择。这是最快的操作方法！',
               },
               {
-                heading: 'No accidental selections:',
+                heading: '不会误触:',
                 subheading:
-                  'Final items are only selected as soon as you release your mouse button in "Marking Mode" or a keyboard key in "Turbo Mode". Use this to explore the menu!',
+                  '最终选项只会在松开鼠标或键盘按键时触发。利用这个技巧探索一下菜单吧！',
               },
             ],
           }),
@@ -129,21 +128,21 @@ export class Sidebar {
         {
           id: 'sidebar-tab-debugging',
           icon: 'ads_click',
-          title: 'Development',
+          title: '开发',
           content: buttonTab({
             buttons: [
               {
                 id: 'dev-tools-button',
                 icon: 'code',
-                title: 'Show Developer Tools',
-                tooltip: 'Open the web developer tools for inspecting the UI.',
+                title: '打开开发者工具',
+                tooltip: '打开浏览器开发者工具来调试用户界面。',
               },
               {
                 id: 'reload-menu-theme-button',
                 icon: 'palette',
-                title: 'Reload Current Menu Theme',
+                title: '重新加载当前菜单主题',
                 tooltip:
-                  'CSS changes will be applied immediately, for changes made to the theme.json file, you need to re-open the menu.',
+                  'CSS 改动将会立即生效，对 theme.json 文件的改动则需要重新打开菜单。',
               },
             ],
           }),
