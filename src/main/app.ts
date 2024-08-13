@@ -164,7 +164,7 @@ export class KandoApp {
 
     this.updateChecker.on('update-available', () => {
       console.log(
-        'Kando 发布新版本啦！前往 https://github.com/kando-menu/kando/releases 下载。'
+        'Kando 发布新版本啦！前往 https://github.com/zetaloop/kando/releases 下载。'
       );
 
       // Show the update-available button in the sidebar.
@@ -177,12 +177,12 @@ export class KandoApp {
       if (Notification.isSupported()) {
         const notification = new Notification({
           title: 'Kando 发布新版本啦！',
-          body: '前往 https://github.com/kando-menu/kando/releases 下载。',
+          body: '前往 https://github.com/zetaloop/kando/releases 下载。',
           icon: path.join(__dirname, require('../../assets/icons/icon.png')),
         });
 
         notification.on('click', () => {
-          shell.openExternal('https://github.com/kando-menu/kando/releases');
+          shell.openExternal('https://github.com/zetaloop/kando/releases');
         });
 
         notification.show();

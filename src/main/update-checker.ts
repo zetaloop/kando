@@ -77,7 +77,7 @@ export class UpdateChecker extends EventEmitter {
     const octokit = new Octokit();
 
     const response = await octokit.request('GET /repos/{owner}/{repo}/releases', {
-      owner: 'kando-menu',
+      owner: 'zetaloop', // owner: 'kando-menu',
       repo: 'kando',
       headers: {
         // eslint-disable-next-line @typescript-eslint/naming-convention
