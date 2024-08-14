@@ -4,7 +4,7 @@ SPDX-License-Identifier: CC-BY-4.0
 -->
 
 > [!TIP]
-> This is the community Chinese localization version of Kando. For the original version, please visit [kando-menu/kando](https://github.com/kando-menu/kando)。<br>
+> This is the community Chinese localization version of Kando, please visit [kando-menu/kando](https://github.com/kando-menu/kando)。<br>
 > 这是 Kando 的社区汉化版，原版请访问 [kando-menu/kando](https://github.com/kando-menu/kando)。
 
 <p align="center">
