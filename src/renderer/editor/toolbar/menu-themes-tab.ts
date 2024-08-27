@@ -136,12 +136,11 @@ export class MenuThemesTab {
       };
     });
 
-    let subheading =
-      'If enabled, you can choose a different theme and color set if your system is in light or dark color mode.';
+    let subheading = '根据系统的浅色和深色模式，自动切换不同的配色方案。';
     if (this.enableDarkMode) {
       subheading = this.darkMode
-        ? 'Your system is currently in dark mode. The settings above will only be used in dark mode.'
-        : 'Your system is currently in light mode. The settings above will only be used in light mode.';
+        ? '系统当前处于深色模式，以上设置将仅在深色模式下生效。'
+        : '系统当前处于浅色模式，以上设置将仅在浅色模式下生效。';
     }
 
     const template = require('./templates/menu-themes-tab.hbs');

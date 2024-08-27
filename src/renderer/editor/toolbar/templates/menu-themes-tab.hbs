@@ -17,7 +17,7 @@
 
 <div class='d-flex h-100 flex-column'>
 
-  <div class="m-3 mb-2 fs-5 align-self-center">In the future, we will have an online repository for menu themes. For now, you can <a target="_blank" href="https://github.com/kando-menu/kando/blob/main/docs/menu-themes.md">learn how to create your own themes</a> and share them in <a target="_blank" href="https://discord.gg/hZwbVSDkhy">Kando's Discord Server</a>!</div>
+  <div class="m-3 mb-2 fs-5 align-self-center">未来我们会有一个在线的主题商店。目前，您可以 <a target="_blank" href="https://github.com/kando-menu/kando/blob/main/docs/menu-themes.md">点击阅读如何编写主题</a>，并在 <a target="_blank" href="https://discord.gg/hZwbVSDkhy">Kando 的 Discord 群</a> 里和我们分享！</div>
 
   <div class='flex-grow-1 align-content-start scrollbox mx-2'>
     <div class="scrollbox-content toolbar-button-grid">
@@ -33,7 +33,7 @@
             </div>
 
             <div class="d-flex flex-row p-2 justify-content-between align-items-center">
-              <button class="btn btn-secondary py-0 px-2 kando-font fs-1" data-bs-toggle="tooltip" data-bs-title="Reset all colors to their defaults">
+              <button class="btn btn-secondary py-0 px-2 kando-font fs-1" data-bs-toggle="tooltip" data-bs-title="恢复默认颜色">
                 <i class="material-symbols-rounded inline-icon">reset_settings</i>
               </button>
               <div class="d-flex gap-2">
@@ -41,7 +41,7 @@
                   <div class="btn color-button p-2 mb-1"  data-bs-toggle="tooltip" data-bs-title="{{@key}}" data-theme-id="{{../id}}" data-color-name="{{@key}}" style="background-color: {{this}}"></div>
                 {{/each}}
               </div>
-              <button class="btn btn-secondary py-0 px-2 kando-font fs-1" data-bs-toggle="tooltip" data-bs-title="Close the color editor">
+              <button class="btn btn-secondary py-0 px-2 kando-font fs-1" data-bs-toggle="tooltip" data-bs-title="关闭颜色编辑器">
                 <i class="material-symbols-rounded inline-icon">done</i>
               </button>
             </div>
@@ -51,10 +51,10 @@
           <div class="theme-button-footer d-flex flex-row p-2 justify-content-between">
             <div class="ps-1">
               <div class="kando-font text-start fs-4">{{name}}</div>
-              <div class="text-start fs-6">by {{author}}</div>
+              <div class="text-start fs-6">作者 {{author}}</div>
             </div>
             <button class="edit-colors-button btn btn-secondary align-self-end fs-5 kando-font">
-             <i class="material-symbols-rounded inline-icon">edit</i> Edit Colors
+             <i class="material-symbols-rounded inline-icon">edit</i> 编辑颜色
             </button>
           </div>
 
@@ -67,7 +67,7 @@
     <input id="kando-menu-theme-enable-dark-mode" type="checkbox" class="form-check-input" {{#if darkMode}} checked {{/if}} />
     <div>
       <div class='kando-font fs-2'>
-        Use Separate Themes and Colors for Light and Dark Mode
+        在浅色和深色模式下使用不同主题
       </div>
       <div class="fs-5">
         {{subheading}}
