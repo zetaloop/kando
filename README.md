@@ -42,8 +42,8 @@ Kando 生来就为 🖱️ 鼠标、🖊️ 手写笔和👆 触摸屏所设计�
 
 测试环境 | :heavy_check_mark: | 注释
 :-- | :---: | ---
-<img height="14" width="14" src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Windows_logo_-_2021_%28Black%29.svg" /> Windows | :heavy_check_mark: | 测试于 Windows 11。
-<img height="14" width="14" src="https://cdn.simpleicons.org/apple" /> macOS | :heavy_check_mark: | 测试于 macOS 11。
+<img height="14" width="14" src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Windows_logo_-_2021_%28Black%29.svg" /> Windows | :heavy_check_mark: |
+<img height="14" width="14" src="https://cdn.simpleicons.org/apple" /> macOS | :heavy_check_mark: |
 <img height="14" width="14" src="https://cdn.simpleicons.org/linux/black" /> GNOME / X11 | :heavy_check_mark: |
 <img height="14" width="14" src="https://cdn.simpleicons.org/linux/black" /> GNOME / Wayland | :heavy_check_mark: | 需要 [GNOME Shell 扩展适配器](https://github.com/kando-menu/gnome-shell-integration) 以提供 Kando 通信的 DBus 接口。
 <img height="14" width="14" src="https://cdn.simpleicons.org/linux/black" /> KDE / X11 | :heavy_check_mark: |
@@ -74,12 +74,16 @@ Kando 自带一个示例菜单，按 <kbd>Ctrl</kbd>+<kbd>Space</kbd> 打开，�
 
 作者：**我是出于纯粹的热情创造了 Kando。** 这个项目完全免费，没有任何商业化的计划。但如果你能够提供创意、贡献代码，或者将它分享给你的朋友和粉丝来支持这个项目，我会非常开心的！ 💖
 
+这些标记为 [适合新手](https://github.com/kando-menu/kando/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) 的问题很适合新贡献者开始参与。
+如果你感兴趣，请在问题下留言，我们可以进一步讨论具体细节！
+
+虽然直接贡献代码是支持项目继续下去的最佳方式，**但赞助也将激励我在业余时间继续开发自由开源的软件**。
+
 [![kofi](https://img.shields.io/badge/赞助-Ko--fi-ff5e5b?logo=ko-fi)](https://ko-fi.com/schneegans)
 [![github](https://img.shields.io/badge/赞助-GitHub-purple?logo=github)](https://github.com/sponsors/Schneegans)
 [![paypal](https://img.shields.io/badge/赞助-PayPal-009cde?logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE)
 [![crypto](https://img.shields.io/badge/赞助-Crypto-f7931a?logo=bitcoin)](https://schneegans.cb.id)
 
-虽然直接贡献代码是支持项目继续下去的最佳方式，但赞助也将激励我在业余时间继续开发自由开源的软件。
 
 **这些了不起的人们为我的开源项目开发提供了资金支持：**
 

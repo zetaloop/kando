@@ -125,6 +125,12 @@ export class Menu extends EventEmitter {
       event.preventDefault();
       event.stopPropagation();
 
+      // Hide the menu on right click events.
+      if ((event as MouseEvent).button === 2) {
+        this.emit('cancel');
+        return;
+      }
+
       this.redraw();
 
       this.input.onPointerDownEvent(event, this.getCenterItemPosition());
@@ -136,12 +142,8 @@ export class Menu extends EventEmitter {
       event.preventDefault();
       event.stopPropagation();
 
-      // Hide the menu on right click events.
-      if (
-        this.input.state === InputState.eClicked &&
-        (event as MouseEvent).button === 2
-      ) {
-        this.emit('cancel');
+      // Ignore right mouse button events.
+      if ((event as MouseEvent).button === 2) {
         return;
       }
 
@@ -173,7 +175,27 @@ export class Menu extends EventEmitter {
     // In order to keep track of any pressed key for the turbo mode, we listen to keydown
     // and keyup events.
     document.addEventListener('keydown', (event) => {
-      if (event.key !== 'Escape') {
+      const anyModifierPressed =
+        event.ctrlKey || event.metaKey || event.shiftKey || event.altKey;
+      const menuKeys = '0123456789abcdefghijklmnopqrstuvwxyz';
+      if (!anyModifierPressed && menuKeys.includes(event.key)) {
+        const index = menuKeys.indexOf(event.key);
+        if (index === 0) {
+          if (this.selectionChain.length > 1) {
+            this.selectItem(this.selectionChain[this.selectionChain.length - 2]);
+          } else {
+            this.emit('cancel');
+          }
+        } else {
+          const currentItem = this.selectionChain[this.selectionChain.length - 1];
+          if (currentItem.children) {
+            const child = currentItem.children[index - 1];
+            if (child) {
+              this.selectItem(child);
+            }
+          }
+        }
+      } else if (event.key !== 'Escape') {
         this.input.onKeyDownEvent();
       }
     });
@@ -295,10 +317,10 @@ export class Menu extends EventEmitter {
   private createNodeTree(rootItem: IRenderedMenuItem, rootContainer: HTMLElement) {
     const queue = [];
 
-    queue.push({ item: rootItem, container: rootContainer, level: 0 });
+    queue.push({ item: rootItem, parent: null, container: rootContainer, level: 0 });
 
     while (queue.length > 0) {
-      const { item, container, level } = queue.shift();
+      const { item, parent, container, level } = queue.shift();
 
       const nodeDiv = this.theme.createItem(item);
       if (this.theme.drawChildrenBelow) {
@@ -315,7 +337,28 @@ export class Menu extends EventEmitter {
         const dir = math.getDirection(item.angle, 1.0);
         item.nodeDiv.style.setProperty('--dir-x', dir.x.toString());
         item.nodeDiv.style.setProperty('--dir-y', dir.y.toString());
-        item.nodeDiv.style.setProperty('--angle', item.angle?.toString());
+        item.nodeDiv.style.setProperty('--angle', item.angle.toString() + 'deg');
+        item.nodeDiv.style.setProperty(
+          '--sibling-count',
+          parent.children.length.toString()
+        );
+
+        if (level > 1) {
+          item.nodeDiv.style.setProperty(
+            '--parent-angle',
+            parent.angle.toString() + 'deg'
+          );
+        }
+
+        if (dir.x < -0.2) {
+          item.nodeDiv.classList.add('left');
+        } else if (dir.x > 0.2) {
+          item.nodeDiv.classList.add('right');
+        } else if (dir.y < 0) {
+          item.nodeDiv.classList.add('top');
+        } else {
+          item.nodeDiv.classList.add('bottom');
+        }
       }
 
       item.nodeDiv.classList.add(`level-${level}`);
@@ -329,6 +372,7 @@ export class Menu extends EventEmitter {
         for (const child of item.children) {
           queue.push({
             item: child as IRenderedMenuItem,
+            parent: item,
             container: nodeDiv,
             level: level + 1,
           });
@@ -663,7 +707,13 @@ export class Menu extends EventEmitter {
         if (this.isParentOfCenterItem(this.hoveredItem)) {
           hoveredAngle = (item.angle + 180) % 360;
         }
-        this.theme.setCenterProperties(item, this.input.angle, hoveredAngle);
+
+        this.theme.setCenterProperties(
+          item,
+          this.input.angle,
+          hoveredAngle,
+          this.isParentOfCenterItem(this.hoveredItem)
+        );
 
         for (let j = 0; j < item.children?.length; ++j) {
           const child = item.children[j] as IRenderedMenuItem;

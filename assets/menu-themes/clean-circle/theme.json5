@@ -27,11 +27,12 @@
 
   // These colors can be configured by the user and are vailable in the CSS file as CSS
   // variables. The default values are used if the user does not provide any values.
-  colors: [
-    { name: 'icon-color', default: 'white' },
-    { name: 'text-color', default: 'rgb(80, 80, 80)' },
-    { name: 'background-color', default: 'rgb(255, 255, 255)' },
-  ],
+  colors: {
+    'action-icon-color': 'rgba(255, 200, 225, 1)',
+    'submenu-icon-color': '#333',
+    'text-color': '#222',
+    'background-color': '#fff',
+  },
 
   // This theme uses two layers, one for the icon and the background and one for the arrow
   // which points to the hovered item.

@@ -15,6 +15,7 @@ import { MenusTab } from './menus-tab';
 import { TrashTab } from './trash-tab';
 import { TemplatesTab } from './templates-tab';
 import { DnDManager } from '../common/dnd-manager';
+import { MenuThemesTab } from './menu-themes-tab';
 
 /**
  * This class is responsible for the toolbar on the bottom of the editor screen. It is an
@@ -48,6 +49,9 @@ export class Toolbar extends EventEmitter {
   /** This manages the templates tab of the toolbar. */
   private templatesTab: TemplatesTab = null;
 
+  /** This manages the menu themes tab of the toolbar. */
+  private menuThemesTab: MenuThemesTab = null;
+
   /**
    * This constructor creates the HTML elements for the toolbar and wires up all the
    * functionality.
@@ -79,6 +83,9 @@ export class Toolbar extends EventEmitter {
       !backend.supportsShortcuts,
       dndManager
     );
+
+    // Initialize the menu themes tab and forward its events.
+    this.menuThemesTab = new MenuThemesTab(this.container);
   }
 
   /** This method returns the container of the editor toolbar. */
@@ -96,6 +103,7 @@ export class Toolbar extends EventEmitter {
   public init(menuSettings: IMenuSettings, currentMenu: number) {
     this.menusTab.init(menuSettings, currentMenu);
     this.templatesTab.init(menuSettings);
+    this.menuThemesTab.init();
   }
 
   /**
@@ -148,10 +156,7 @@ export class Toolbar extends EventEmitter {
           icon: 'palette',
           title: '菜单主题',
           gapBefore: true,
-          content: emptyTab({
-            heading: '以后这里会有很多菜单主题！',
-            subheading: '这里将会有很多预览图，可以联网下载各式主题。',
-          }),
+          content: '',
         },
         {
           id: 'kando-editor-themes-tab',

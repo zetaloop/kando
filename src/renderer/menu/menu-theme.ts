@@ -53,10 +53,13 @@ export class MenuTheme {
       initialValue: '0',
     });
 
-    // Register the pointer-angle and hover-angle CSS properties. These are set for each
-    // layer of the center item to allow for cool effects when the user moves the pointer
-    // around. The pointer-angle is the angle towards the mouse pointer, the hover-angle
-    // is the angle towards the currently hovered child.
+    // Register the angle CSS properties. These are set for each layer of the center item
+    // to allow for cool effects when the user moves the pointer around. The pointer-angle
+    // is the angle towards the mouse pointer, the hover-angle is the angle towards the
+    // currently hovered child.
+
+    // This will be set to the angle towards the mouse pointer in degrees, starting at the
+    // top with 0° and going clockwise.
     CSS.registerProperty({
       name: '--pointer-angle',
       syntax: '<angle>',
@@ -64,8 +67,19 @@ export class MenuTheme {
       initialValue: '0deg',
     });
 
+    // This will be set to the angle towards the currently hovered item in degrees,
+    // starting at the top with 0° and going clockwise. If the center is hovered, this
+    // will be the direction towards the parent item (if there is any).
     CSS.registerProperty({
       name: '--hover-angle',
+      syntax: '<angle>',
+      inherits: false,
+      initialValue: '0deg',
+    });
+
+    // Same as above, but if the center is hovered, this will not be updated.
+    CSS.registerProperty({
+      name: '--hovered-child-angle',
       syntax: '<angle>',
       inherits: false,
       initialValue: '0deg',
@@ -106,24 +120,24 @@ export class MenuTheme {
     const head = document.head;
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'file://' + description.cssFile;
+    link.href = 'file://' + description.directory + '/' + description.id + '/theme.css';
     link.type = 'text/css';
     link.id = 'kando-menu-theme';
     head.appendChild(link);
 
     // Register the colors as CSS properties.
-    this.description.colors.forEach((color) => {
+    Object.entries(this.description.colors).forEach(([name, color]) => {
       // Try to register the property. If this fails, we had registered it before and
       // can just set the value.
       try {
         CSS.registerProperty({
-          name: `--${color.name}`,
+          name: `--${name}`,
           syntax: '<color>',
           inherits: true,
-          initialValue: color.default,
+          initialValue: color,
         });
       } catch (e) {
-        document.documentElement.style.setProperty(`--${color.name}`, color.default);
+        document.documentElement.style.setProperty(`--${name}`, color);
       }
     });
   }
@@ -166,9 +180,9 @@ export class MenuTheme {
   }
 
   /** Sets the colors defined in the theme description as CSS properties. */
-  public setColors(colors: Array<{ name: string; color: string }>) {
-    colors.forEach((color) => {
-      document.documentElement.style.setProperty(`--${color.name}`, color.color);
+  public setColors(colors: Record<string, string>) {
+    Object.entries(colors).forEach(([name, color]) => {
+      document.documentElement.style.setProperty(`--${name}`, color);
     });
   }
 
@@ -187,21 +201,27 @@ export class MenuTheme {
   }
 
   /**
-   * Sets the custom CSS properties for the given center menu item. Currently, this are
-   * the `--pointer-angle` and `--hover-angle` properties which are set to the angle
-   * towards the pointer and the angle towards the currently hovered child.
+   * Sets the custom CSS angle properties for the given center menu item.
    *
    * @param item The menu item to set the properties for.
    * @param pointerAngle The angle towards the pointer.
    * @param hoverAngle The angle towards the currently hovered child.
+   * @param parentHovered True if the parent item is hovered.
    */
   public setCenterProperties(
     item: IRenderedMenuItem,
     pointerAngle: number,
-    hoverAngle: number
+    hoverAngle: number,
+    parentHovered: boolean
   ) {
     hoverAngle = closestEquivalentAngle(item.lastHoveredChildAngle, hoverAngle);
     pointerAngle = closestEquivalentAngle(item.lastPointerAngle, pointerAngle);
+
+    // If both angles are set, we want to make sure that they are not 360° apart. This
+    // ensures that themes can use both and transition between them smoothly.
+    if (pointerAngle != null && hoverAngle != null) {
+      hoverAngle = closestEquivalentAngle(pointerAngle, hoverAngle);
+    }
 
     this.description.layers.forEach((layer) => {
       const div = item.nodeDiv.querySelector(`:scope > .${layer.class}`) as HTMLElement;
@@ -217,6 +237,10 @@ export class MenuTheme {
 
       if (hoverAngle != null) {
         div.style.setProperty('--hover-angle', hoverAngle + 'deg');
+
+        if (!parentHovered) {
+          div.style.setProperty('--hovered-child-angle', hoverAngle + 'deg');
+        }
       }
     });
 

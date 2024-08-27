@@ -18,20 +18,30 @@
   --grandchild-size: 15px;
   --connector-width: 10px;
 
-  --menu-transition: all 250ms cubic-bezier(0.775, 1.325, 0.535, 1);
-  --opacity-transition: opacity 250ms ease;
+  --menu-transition: all 200ms ease;
 
   transition: var(--menu-transition);
 
   /* Positioning ---------------------------------------------------------------------- */
 
   /* Child items are positioned around the active node. */
-  &.child {
-    transform: translate(calc(var(--child-distance) * var(--dir-x)),
-        calc(var(--child-distance) * var(--dir-y)));
+  &.child.type-submenu {
+    transform: translate(calc(max(var(--child-distance), 10px * var(--sibling-count)) * var(--dir-x)),
+        calc(max(var(--child-distance), 10px * var(--sibling-count)) * var(--dir-y)));
   }
 
-  /* Grandchild items are positioned around the child items. */
+  &.child:not(.type-submenu) {
+    transform: translate(calc(max(var(--child-distance), 10px * var(--sibling-count)) * var(--dir-x)),
+        calc(max(var(--child-distance), 10px * var(--sibling-count)) * var(--dir-y))) !important;
+
+    &.hovered {
+      transform: scale(1.2) translate(calc(max(var(--child-distance), 10px * var(--sibling-count)) * var(--dir-x)),
+          calc(max(var(--child-distance), 10px * var(--sibling-count)) * var(--dir-y))) !important;
+    }
+  }
+
+  /* Grandchild items are hidden with this theme, but we have to position them
+     nevertheless to allow for smooth transitions when showing or hiding them. */
   &.grandchild {
     transform: translate(calc(var(--grandchild-distance) * var(--dir-x)),
         calc(var(--grandchild-distance) * var(--dir-y)));
@@ -40,12 +50,12 @@
   /* If there is a hovered child node, we scale all children up a bit to create a cool
      zoom effect. The hovered child itself is scaled up even more. */
   &.active:has(>.hovered)>.child {
-    transform: scale(calc(1.1 - pow(var(--angle-diff) / 180, 0.2) * 0.1)) translate(calc(var(--child-distance) * var(--dir-x)),
-        calc(var(--child-distance) * var(--dir-y)));
+    transform: scale(calc(1.1 - pow(var(--angle-diff) / 180, 0.2) * 0.1)) translate(calc(max(var(--child-distance), 10px * var(--sibling-count)) * var(--dir-x)),
+        calc(max(var(--child-distance), 10px * var(--sibling-count)) * var(--dir-y)));
 
     &.hovered {
-      transform: scale(1.2) translate(calc(var(--child-distance) * var(--dir-x)),
-          calc(var(--child-distance) * var(--dir-y)));
+      transform: scale(1.2) translate(calc(max(var(--child-distance), 10px * var(--sibling-count)) * var(--dir-x)),
+          calc(max(var(--child-distance), 10px * var(--sibling-count)) * var(--dir-y)));
     }
   }
 
@@ -53,20 +63,19 @@
   /* Theme Layers --------------------------------------------------------------------- */
 
   /* We hide all icons by default. They will be shown further down in this file for the
-       center item and the child items. */
+     center item and the child items. */
   .icon-container {
     position: relative;
     top: 0;
     left: 0;
     width: 100%;
     opacity: 0;
-    color: var(--icon-color);
+    color: var(--action-icon-color);
     transition: var(--menu-transition);
   }
 
-  &.dragged>.icon-layer>.icon-container,
   &.type-submenu>.icon-layer>.icon-container {
-    color: var(--text-color);
+    color: var(--submenu-icon-color);
   }
 
   .arrow-layer,
@@ -79,6 +88,10 @@
     border-radius: 50%;
   }
 
+  .arrow-layer {
+    opacity: 0;
+  }
+
   /* The active menu item is the center of the menu. */
   &.active>.arrow-layer {
     width: 0;
@@ -88,6 +101,7 @@
     border-bottom: 10px solid var(--background-color);
     left: -10px;
     top: -5px;
+    transform: scale(0.8) rotate(var(--pointer-angle)) translateY(calc(-0.5 * var(--center-size) - 5px + 1px));
   }
 
   &.active>.icon-layer {
@@ -101,8 +115,6 @@
     opacity: 0;
   }
 
-  &.dragged>.icon-layer,
-  &.selected>.icon-layer,
   &.type-submenu>.icon-layer {
     background-color: var(--background-color);
     border-radius: 50%;
@@ -115,22 +127,15 @@
     }
   }
 
-  &:not(.type-submenu):not(.dragged)>.icon-layer>.icon-container {
+  &:not(.type-submenu)>.icon-layer>.icon-container {
     filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5));
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
   }
 
-  .arrow-layer {
-    transform: rotate(var(--hover-angle)) translateY(calc(-0.5 * var(--center-size) - 5px + 1px));
-  }
 
-  &.parent>.active:not(:has(.hovered))>.arrow-layer,
-  &:has(.dragged)>.arrow-layer {
-    opacity: 0;
-  }
-
-  &.active.hovered>.arrow-layer {
-    opacity: 0;
-    transform: rotate(var(--hover-angle)) translateY(calc(-0.4 * var(--center-size)));
+  &.active:has(.hovered:not(.dragged.type-submenu))>.arrow-layer {
+    transform: rotate(var(--hovered-child-angle)) translateY(calc(-0.5 * var(--center-size) - 5px + 1px));
+    opacity: 1;
   }
 
   /* If the parent or a child node is clicked, we scale it down to normal size. */
@@ -139,14 +144,14 @@
     transform: scale(0.8);
   }
 
-  /* Show the icons of the center, parent and child items. */
+  /* Show the icons of the parent and child items. */
   &.parent>.icon-layer>.icon-container,
   &.child>.icon-layer>.icon-container {
     opacity: 1;
   }
 
   /* Child items are displayed around the active node. The parent node of the active
-       node is displayed in a similar style. */
+     node is displayed in a similar style. */
   &.parent>.icon-layer,
   &.child.type-submenu>.icon-layer {
     top: calc(-1 * var(--submenu-size) / 2);
@@ -162,7 +167,8 @@
     height: var(--child-size);
   }
 
-  /* Grandchild items are very small and drawn below the child items. */
+  /* Grandchild items are invisible. The sizing is required for transitions from and to
+     this state. */
   &.grandchild>.icon-layer {
     top: calc(-1 * var(--grandchild-size) / 2);
     left: calc(-1 * var(--grandchild-size) / 2);
@@ -171,8 +177,8 @@
     opacity: 0;
   }
 
-  /* We disable any transition for dragged items. */
-  &.dragged {
+  /* We disable any transition for dragged submenu items. */
+  &.dragged.type-submenu {
     transition: none;
   }
 
@@ -183,11 +189,19 @@
     height: var(--connector-width);
     top: calc(-1 * var(--connector-width) / 2);
     background-color: var(--background-color);
+    opacity: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   }
 
-  &:has(.dragged)>.connector,
-  &:has(.clicked)>.connector {
+  &:has(>.dragged)>.connector,
+  &:has(>.clicked)>.connector {
     transition: none;
+  }
+
+  &:has(>.parent)>.connector,
+  &:has(>.active.type-submenu)>.connector,
+  &:has(>.dragged.type-submenu)>.connector {
+    opacity: 1;
   }
 }
 
@@ -195,7 +209,7 @@
 
 .center-text {
   color: var(--text-color);
-  transition: var(--opacity-transition);
+  transition: var(--menu-transition);
   font-size: 16px;
   line-height: 22px;
   overflow: visible;

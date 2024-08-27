@@ -13,10 +13,11 @@ Depending on the menu item's state (e.g. active, child, parent, hovered, etc.), 
 
 ## 🧬 Anatomy of a Menu Theme
 
-A menu theme is a directory containing at least two files: `theme.json` and `theme.css`.
+A menu theme is a directory containing at least three files: `theme.json`, `theme.css`, and `preview.jpg`.
 * The JSON file contains metadata about the theme and a list of layers which will be created for each menu item.
 Each layer gets a specific _class name_ which can be used in the CSS file to style the layer.
 * The CSS file can contain any CSS code you like. With _CSS selectors_, you can choose which layers to style in which way.
+* The preview image is a square-shaped image which will be shown in the menu editor to preview the theme.
 
 The CSS file can reference assets like images or fonts. These can be placed in the same directory as the JSON and CSS files or in a subdirectory.
 
@@ -43,16 +44,14 @@ The keys are explained with inline comments.
 Most of it will be clear, but some keys might need a bit more explanation.
 We will have a look at the `colors` and `layers` keys in the following sections.
 
-https://github.com/kando-menu/kando/blob/03c3962e8ce29f84c9b3ae0a5d2ee606afa2fd27/assets/menu-themes/default/theme.json5#L1-L39
+https://github.com/kando-menu/kando/blob/235e29c9d558d554b83b401fbb61fbf74a65f034/assets/menu-themes/default/theme.json5#L1-L39
 
-### `colors: []`
+### `colors: {}`
 
-The `colors` key is an array of objects.
-Each object has a `name` and a `default` key.
-In your CSS file, you can use the colors with `var(--<name>)`.
-
-In the future, the user will be able to override these colors in the menu editor.
-It is already possible to override them today by adding a `"menuThemeColors": [],` key to the `config.json` file where each entry is an object with a `name` and a `color` key.
+The `colors` object lists colors which can be configured by the user.
+Each entry maps a CSS color to a given color name.
+In your CSS file, you can use the colors with `var(--<key>)`.
+In the menu editor, the user can change the value of these colors.
 
 ### `layers: []`
 
@@ -86,22 +85,22 @@ The overall tree structure of the menu may look like this:
 
 ```
 #kando-menu
-├ .menu-node.level-0.type-submenu.parent                        <-- This is the root item of the menu.
-│  ├ .menu-node.level-1.type-submenu.grandchild                     It has three children, the third one
-│  │  ├ .menu-node.level-2.type-uri                                 is a submenu which is currently open.
-│  │  └ .menu-node.level-2.type-command
-│  ├ .menu-node.level-1.type-submenu.grandchild
-│  │  ├ .menu-node.level-2.type-hotkey
-│  │  └ .menu-node.level-2.type-macro
-│  └ .menu-node.level-1.type-submenu.active                     <-- This is the currently active menu item.
-│     ├ .menu-node.level-2.child.type-uri                           It has four children.
+├ .menu-node.level-0.top.type-submenu.parent                    <-- This is the root item of the menu.
+│  ├ .menu-node.level-1.top.type-submenu.grandchild                 It has three children, the third one
+│  │  ├ .menu-node.level-2.right.type-uri                           is a submenu which is currently open.
+│  │  └ .menu-node.level-2.left.type-command
+│  ├ .menu-node.level-1.right.type-submenu.grandchild
+│  │  ├ .menu-node.level-2.top.type-hotkey
+│  │  └ .menu-node.level-2.bottom.type-macro
+│  └ .menu-node.level-1.left.type-submenu.active                <-- This is the currently active menu item.
+│     ├ .menu-node.level-2.child.top.type-uri                       It has four children.
 │     ├ .menu-node.level-2.type-submenu.child.hovered.dragged   <-- The second child is a submenu which is
-│     │  ├ .menu-node.level-3.grandchild.type-command               currently dragged around in marking or
-│     │  └ .menu-node.level-3.grandchild.type-command               turbo mode.
-│     ├ .menu-node.level-2.type-submenu.child
-│     │  ├ .menu-node.level-3.grandchild.type-command
-│     │  └ .menu-node.level-3.grandchild.type-command
-│     └ .menu-node.level-2.child.type-macro
+│     │  ├ .menu-node.level-3.grandchild.top.type-command           currently dragged around in marking or
+│     │  └ .menu-node.level-3.grandchild.bottom.type-command        turbo mode.
+│     ├ .menu-node.level-2.child.left.type-submenu
+│     │  ├ .menu-node.level-3.grandchild.top.type-command
+│     │  └ .menu-node.level-3.grandchild.bottom.type-command
+│     └ .menu-node.level-2.child.right.type-macro
 └ .center-text                                                  <-- This is the text shown in the center
                                                                     of the menu.
 ```
@@ -123,6 +122,8 @@ Only the root item has the class `.level-0`.
 Furthermore, the **menu node classes contain the type of the item** (`.type-submenu`, `.type-uri`, `.type-command`, etc).
 This can be used to style different item types differently.
 
+Last but not least, **each menu node has a class for its approximate direction** relative to the center of the menu (`.top`, `.right`, `.bottom`, `.left`). Escept for the root node, which is always in the center.
+
 Not depicted in the tree structure above are **the connector lines** between the menu items and the layers added by the theme.
 The connector lines are long divs which are appended to each submenu menu node.
 They have the class `.connector` and can be styled as well.
@@ -139,9 +140,12 @@ Property | Available on | Description
 `--dir-x` | All elements with the `.menu-node` class except for the root node. | The x-direction of the menu item relative to the parent menu item. If the item is on the right side, this will be `1`, if it's on the left, it will be `-1`.
 `--dir-y` | All elements with the `.menu-node` class except for the root node. | The y-direction of the menu item relative to the parent menu item. If the item is on the top, this will be `-1`, if it's on the bottom, it will be `1`.
 `--angle` | All elements with the `.menu-node` class except for the root node. | The angle of the item in degrees, starting at the top with 0° and going clockwise.
+`--parent-angle` | All elements with the `.menu-node` class except for the root node and the direct children of the root node. | The angle of the parent item relative to its parent in degrees, starting at the top with 0° and going clockwise. This is useful for styling grandchildren as this will be the same as the `--angle` property of the child.
 `--angle-diff` | All elements with the classes `.menu-node.child`. | The angular difference between the item and the direction towards the mouse pointer.
 `--pointer-angle` | All layer divs attached to the element with the `.menu-node.active` classes. | The angle towards the mouse pointer in degrees, starting at the top with 0° and going clockwise.
-`--hover-angle` | All layer divs attached to the element with the `.menu-node.active` classes. | The angle towards the currently hovered child item in degrees, starting at the top with 0° and going clockwise.
+`--hover-angle` | All layer divs attached to the element with the `.menu-node.active` classes. | The angle towards the currently hovered item in degrees, starting at the top with 0° and going clockwise. If the center is hovered, this will be the direction towards the parent item (if there is any).
+`--hovered-child-angle` | All layer divs attached to the element with the `.menu-node.active` classes. | The same as `--hover-angle`, but if the center is hovered, this will not be updated.
+`--sibling-count` | All elements with the `.menu-node` class except for the root node. | The number of child items the item's parent has. This can be used to increase the child item distance if there are many children.
 
 
 ### Styling the Layers
@@ -151,7 +155,7 @@ Usually, you will want to apply a transformation to the `.menu-node` elements to
 Appearance properties like `background-color`, `border`, `box-shadow`, or `filter` are usually applied to the layer elements.
 Here's how the theme.css file of the default theme looks like:
 
-https://github.com/kando-menu/kando/blob/03c3962e8ce29f84c9b3ae0a5d2ee606afa2fd27/assets/menu-themes/default/theme.css#L1-L177
+https://github.com/kando-menu/kando/blob/235e29c9d558d554b83b401fbb61fbf74a65f034/assets/menu-themes/default/theme.css#L1-L177
 
 You should have a look at this default theme to get an idea of how to style the menu.
 It is maybe a good idea to start with a copy of the default theme and modify it to your needs.
@@ -175,7 +179,13 @@ Here are some CSS selectors which you may find useful.
 .menu-node[data-name='Menu Item Name'] {}
 ```
 
-## 🛳️ Distributing your Theme
+## 🖼️ A Preview for your Theme: `preview.jpg`
+
+This should be a **square** screenshot of the menu with the theme applied.
+You can use a custom background to suit your theme.
+The menu should be shown in the center of the image, the default themes use a resolution of **700x700 pixels**, but Kando will scale the image to fit the preview area in the menu editor.
+
+# 🛳️ Distributing your Theme
 
 In the future, we plan to add a repository for sharing themes.
 For now, you are invited to share your themes in [Kando's Discord Server](https://discord.gg/hZwbVSDkhy).
