@@ -9,7 +9,7 @@
 // SPDX-License-Identifier: CC0-1.0
 
 {
-  name: 'Default',
+  name: '默认',
   author: 'Simon Schneegans',
   license: 'CC0-1.0',
   themeVersion: '1.0',
