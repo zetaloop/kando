@@ -3,9 +3,9 @@ SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
 SPDX-License-Identifier: CC-BY-4.0
 -->
 
-> [!TIP]
-> This is the community Chinese localization version of Kando, please visit [kando-menu/kando](https://github.com/kando-menu/kando)。<br>
-> 这是 Kando 的社区汉化版，原版请访问 [kando-menu/kando](https://github.com/kando-menu/kando)。
+> [!IMPORTANT]
+> This is the deprecated community Chinese localization version of Kando, please visit [kando-menu/kando](https://github.com/kando-menu/kando)。<br>
+> 原版已支持中文，汉化文本已经转移到 [官方 Weblate 翻译](https://hosted.weblate.org/engage/kando/)，此汉化版的使命已结束。**请使用 [Kando 原版](https://github.com/kando-menu/kando) 吧！**
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=vOE7EAlPUwE"><img src="docs/img/video.jpg" /></a>
